@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COCC_Conn3ct</string>
+    <string name="mapButton">New Button</string>
+    <string name="mapstring">Campus Map</string>
+    <string name="loginpage">Student Login</string>
+</resources>
