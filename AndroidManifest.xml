@@ -3,7 +3,8 @@
           package="com.example.test_android"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="19"/>
+    <uses-sdk android:minSdkVersion="17"
+              android:targetSdkVersion="19"/>
     <permission
         android:name="com.example.test_android.MAPS_RECEIVE"
         android:protectionLevel="signature"/>
@@ -46,6 +47,11 @@
         <activity android:name=".web_view_login">
 
         </activity>
+
+        <activity android:name=".facebook_cocc">
+
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>

@@ -14,18 +14,18 @@ import android.webkit.WebViewClient;
  *
  *
  */
-public class web_view_login extends Activity{
+public class facebook_cocc extends Activity{
 
 
     protected void onCreate(Bundle savedInstanceState){
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.web_view_login);
+        setContentView(R.layout.facebook);
 
 
         // setting up a webview, an extension of the view class it shows webpages in your program not on another browser.
 
-       WebView myWebview = (WebView) findViewById(R.id.webview);
+        WebView myWebview = (WebView) findViewById(R.id.webview);
 
         // instantiate the websettings class attachted to our webview
         WebSettings webSettings = myWebview.getSettings();
@@ -35,7 +35,7 @@ public class web_view_login extends Activity{
 
         // this forces the phone to actually run a webview before searching for other browsers installed on the phone
         myWebview.setWebViewClient(new WebViewClient());
-        myWebview.loadUrl("http://www.cocc.edu/student-login/");
+        myWebview.loadUrl("https://www.facebook.com/CentralOregonCommunityCollege");
 
 
     }

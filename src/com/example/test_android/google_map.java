@@ -64,8 +64,8 @@ public class google_map extends Activity {
                 .position(cocc));
 
         GroundOverlayOptions campusOverlay = new GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.cocc_map))
-                .position(cocc, 200f, 300f);
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.larger_cocc_map))
+                .position(cocc, 1500f, 1500f);
 
         coccmap.addGroundOverlay(campusOverlay);
 
