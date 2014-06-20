@@ -37,11 +37,13 @@ public class MyActivity extends Activity {
         Button myButton = (Button) findViewById(R.id.button3);
         Button google_button = (Button) findViewById(R.id.button2);
         Button fBButton = (Button) findViewById(R.id.fbButton);
+        Button LibButton = (Button) findViewById(R.id.LibraryButton);
 
         topButton.setOnClickListener(myhandler);
         myButton.setOnClickListener(myhandler);
         google_button.setOnClickListener(myhandler);
         fBButton.setOnClickListener(myhandler);
+        LibButton.setOnClickListener(myhandler);
 
     }
 
@@ -74,6 +76,11 @@ public class MyActivity extends Activity {
                 Intent clickmap = new Intent(MyActivity.this, google_map.class);
                 startActivity(clickmap);
 
+            }
+
+            if (v.getId() == R.id.LibraryButton){
+                Intent LibraryPageIntent = new Intent(MyActivity.this, library.class);
+                startActivity(LibraryPageIntent);
             }
 
 

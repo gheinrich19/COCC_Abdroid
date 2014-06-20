@@ -2,6 +2,7 @@ package com.example.test_android;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,11 +17,13 @@ import android.webkit.WebViewClient;
  */
 public class facebook_cocc extends Activity{
 
+static final String LOG_TAG = "LOG_TAG";
 
     protected void onCreate(Bundle savedInstanceState){
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebook);
+
 
 
         // setting up a webview, an extension of the view class it shows webpages in your program not on another browser.
@@ -36,6 +39,9 @@ public class facebook_cocc extends Activity{
         // this forces the phone to actually run a webview before searching for other browsers installed on the phone
         myWebview.setWebViewClient(new WebViewClient());
         myWebview.loadUrl("https://www.facebook.com/CentralOregonCommunityCollege");
+
+
+        Log.d(LOG_TAG, "HEllO ANDROID");
 
 
     }
