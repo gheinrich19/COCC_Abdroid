@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -12,5 +13,13 @@
         android:id="@+id/libraryhours"
         android:layout_gravity="right"
         android:layout_weight="0.05"
-        />
+        android:text="hey"/>
+
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listViewt"
+            android:layout_weight="0.88"
+            tools:listitem="@android:layout/activity_list_item"
+            android:choiceMode="singleChoice"/>
 </LinearLayout>

@@ -4,20 +4,32 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import com.google.android.gms.games.internal.LibjingleNativeSocket;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * Created by gage heinrich on 6/18/14. i am going to implement Jsoup to arse HTML into a listview. it will target the
- * table in the cocc calendar.
+ * Created by Gage Heinrich on 6/18/14. i am going to implement Jsoup to arse HTML into a listview. it will target the
+ * table in the cocc calendar. This Activity may get a little confusing. I will try to expleain as best I can.
+ * ******** 1. We start by creating our Activity
+ * ******** 2. Since Parsing is involved/ through an HTTP request we need to instantiate or override the AsyncTask class.(This allows us
+ * ********    To run a process in the background while not overworking or crashing the main or UI thread).
+ * ******** 3. We use the doInBackground funtcion to complete this task.
+ * ******** 4. I have imported the Jsoup library for parsing purposes.
+ * ******** 5. To update the UI thread with the calander information that was handled in the parsingtable class we use the
+ * ********    runOnUiThread that is linked to the Library activity found on line #72.
+ * ******** 6. We use an arrayadapter to convert our List<string> to put in the Listview layout in the xml file Library
  */
 public class library extends Activity {
     public void onCreate(Bundle savedInstanceState) {
@@ -25,17 +37,20 @@ public class library extends Activity {
         setContentView(R.layout.library);
 
 
+        // We are using AsyncTask to allow the http/ network connection rto run in the background. A process that uses the network can't be done on the main or UI Thread.
+        // So we push all the parsing to the background and when it is done the words are dispalye
 
         class parsingtable extends AsyncTask<Void, Void, String> {
             @Override
 
 
-            protected String doInBackground(Void... params) {
+            public String doInBackground(Void... params) {
+                // these variables are for testing purposes and the top right heading in the library layout xml file.
                 String MyTAG = "MYTAG";
                 String title = "";
 
                 // this is a List that we will use to store info being skimmed from url
-                List columnTitles = new ArrayList<String>();
+                final List<String> columnTitles = new ArrayList<String>();
 
                 try {
 
@@ -46,19 +61,36 @@ public class library extends Activity {
 
                     // ListHeading is the HTML className located on the webpage in which table we are pulling from
 
-                    Elements tblElements = doc.getElementsByClass("ListHeading");
+                    Elements tblElements = doc.getElementsByClass("DayCalText");
 
 
-                    // This for loop grabs each instance of Listheading class and puts in List
-                    for( Element e : tblElements){
+
+                    // This for loop grabs each instance of  tblElements and puts in List of type dataType String
+                    for (Element e : tblElements) {
                         String s = e.text();
-                        columnTitles.add(s);
+                         columnTitles.add(s);
                         Log.d(MyTAG, "" + e.text());
                     }
 
+                   for ( String l : columnTitles)
+                   {
+                       if (l == "_CRITICAL DATE1")
+                       {
+                           columnTitles.remove(l);
+                       }
 
+                   }
 
+                    library.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(library.this, R.layout.eventcalanderitem, columnTitles);
 
+                            ListView list = (ListView) findViewById(R.id.listViewt);
+                            list.setAdapter(adapter);
+
+                        }
+                    });
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -69,14 +101,19 @@ public class library extends Activity {
 
             @Override
             protected void onPostExecute(String result) {
-                ((TextView)findViewById(R.id.libraryhours)).setText(result);
+                ((TextView) findViewById(R.id.libraryhours)).setText(result);
 
 
             }
 
-
         }
+
         parsingtable parsingtable = new parsingtable();
         parsingtable.execute();
     }
-}
+
+    }
+
+
+
+

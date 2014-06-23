@@ -81,6 +81,7 @@ public class MyActivity extends Activity {
             if (v.getId() == R.id.LibraryButton){
                 Intent LibraryPageIntent = new Intent(MyActivity.this, library.class);
                 startActivity(LibraryPageIntent);
+
             }
 
 
