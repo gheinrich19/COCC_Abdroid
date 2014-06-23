@@ -61,7 +61,12 @@ public class library extends Activity {
 
                     // ListHeading is the HTML className located on the webpage in which table we are pulling from
 
-                    Elements tblElements = doc.getElementsByClass("DayCalText");
+                    Elements tblElements = doc.select(".DayCalText:not(script)");
+
+
+                    // doc.getElementsByClass("DayCalText").not("<script>");//doc.getElementsByClass("DayCalText");
+
+
 
 
 
