@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class MyActivity extends Activity {
@@ -34,8 +35,8 @@ public class MyActivity extends Activity {
         Button topButton = (Button) findViewById(R.id.button);
 
         // button that will be on top of the homepage app
-        Button myButton = (Button) findViewById(R.id.button3);
-        Button google_button = (Button) findViewById(R.id.button2);
+        ImageButton myButton = (ImageButton) findViewById(R.id.button3);
+        ImageButton google_button = (ImageButton) findViewById(R.id.button2);
         Button fBButton = (Button) findViewById(R.id.fbButton);
         Button LibButton = (Button) findViewById(R.id.LibraryButton);
 

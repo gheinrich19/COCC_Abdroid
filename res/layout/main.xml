@@ -25,24 +25,24 @@
             android:baselineAlignBottom="false"
             android:background="@drawable/roundbuttons"
             android:text="Campus Map"/>
-    <Button
+    <ImageButton
             android:layout_marginTop="20dp"
-            android:layout_width="200dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="google map"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
-            android:background="@drawable/roundbuttons"
+            android:background="@drawable/mapicon"
             android:id="@+id/button2"/>
-    <Button
+    <ImageButton
 
             android:layout_marginTop="20dp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
             android:text="@string/loginpage"
-            android:background="@drawable/roundbuttons"
+            android:background="@drawable/bobcatface"
             android:id="@+id/button3"/>
 
     <Button

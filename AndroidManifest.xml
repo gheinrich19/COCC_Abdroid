@@ -36,25 +36,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="MyMap">
+        <!-- here is a list of all of my activities in the application ************ -->
+        ******    <activity android:name="MyMap"></activity>                  ******
 
-        </activity>
+        ******    <activity android:name="google_map"></activity>             ******
 
-        <activity android:name="google_map">
+        ******     <activity android:name=".web_view_login"></activity>        ******
 
-        </activity>
+        ******    <activity android:name=".library"></activity>               ******
 
-        <activity android:name=".web_view_login">
+        ******    <activity android:name=".facebook_cocc"></activity>         ******
 
-        </activity>
+        ******    <activity android:name=".LibTwitButton_webview"></activity> ******
 
-        <activity android:name=".library">
+        ******    <activity android:name=".LibraryFbButton_webview"></activity> ****
 
-        </activity>
-
-        <activity android:name=".facebook_cocc">
-
-        </activity>
+        <!-- ************************************************************** -->
 
         <meta-data
             android:name="com.google.android.gms.version"

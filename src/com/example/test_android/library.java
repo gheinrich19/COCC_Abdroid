@@ -1,12 +1,12 @@
 package com.example.test_android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.*;
 import com.google.android.gms.games.internal.LibjingleNativeSocket;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,9 +39,20 @@ public class library extends Activity {
 
         // We are using AsyncTask to allow the http/ network connection rto run in the background. A process that uses the network can't be done on the main or UI Thread.
         // So we push all the parsing to the background and when it is done the words are dispalye
+       ImageButton LibFbButton = (ImageButton)findViewById(R.id.LibTwitButton);
+        ImageButton LibTwitButton = (ImageButton)findViewById(R.id.LibFbButton);
+
+
+        LibFbButton.setOnClickListener(LibraryHandler);
+        LibTwitButton.setOnClickListener(LibraryHandler);
+
+
+
 
         class parsingtable extends AsyncTask<Void, Void, String> {
             @Override
+
+
 
 
             public String doInBackground(Void... params) {
@@ -61,30 +72,26 @@ public class library extends Activity {
 
                     // ListHeading is the HTML className located on the webpage in which table we are pulling from
 
-                    Elements tblElements = doc.select(".DayCalText:not(script)");
+                    Elements tblElements = doc.select(".DayCalText");
+                    tblElements = tblElements.not("script");
 
 
                     // doc.getElementsByClass("DayCalText").not("<script>");//doc.getElementsByClass("DayCalText");
 
 
-
-
-
                     // This for loop grabs each instance of  tblElements and puts in List of type dataType String
                     for (Element e : tblElements) {
                         String s = e.text();
-                         columnTitles.add(s);
+                        columnTitles.add(s);
                         Log.d(MyTAG, "" + e.text());
                     }
 
-                   for ( String l : columnTitles)
-                   {
-                       if (l == "_CRITICAL DATE1")
-                       {
-                           columnTitles.remove(l);
-                       }
+                    for (int i = 0; i < columnTitles.size(); i++) {
+                        if (columnTitles.get(i).length() == 0 || columnTitles.get(i).length() == 1) {
+                            columnTitles.remove(i);
+                        }
+                    }
 
-                   }
 
                     library.this.runOnUiThread(new Runnable() {
                         @Override
@@ -96,6 +103,7 @@ public class library extends Activity {
 
                         }
                     });
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -117,7 +125,28 @@ public class library extends Activity {
         parsingtable.execute();
     }
 
-    }
+    public View.OnClickListener LibraryHandler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if (v.getId() == R.id.LibFbButton)
+            {
+                Intent LibFbButtonIntent = new Intent(library.this, LibraryFbButton_webview.class);
+                startActivity(LibFbButtonIntent);
+
+
+            }
+
+            if (v.getId() == R.id.LibTwitButton)
+            {
+                Intent LibTwitButtonIntent = new Intent(library.this, LibTwitButton_webview.class);
+                startActivity(LibTwitButtonIntent);
+            }
+
+        }
+    };
+
+}
 
 
 
