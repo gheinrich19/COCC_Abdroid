@@ -32,19 +32,22 @@ public class MyActivity extends Activity {
 
 
         // button that is 2nd from the top that goes to the map_page
-        Button topButton = (Button) findViewById(R.id.button);
+
 
         // button that will be on top of the homepage app
         ImageButton myButton = (ImageButton) findViewById(R.id.button3);
         ImageButton google_button = (ImageButton) findViewById(R.id.button2);
-        Button fBButton = (Button) findViewById(R.id.fbButton);
-        Button LibButton = (Button) findViewById(R.id.LibraryButton);
+        ImageButton fBButton = (ImageButton) findViewById(R.id.fbButton);
+       ImageButton LibButton = (ImageButton) findViewById(R.id.LibraryButton);
+        ImageButton YoutubeButton = (ImageButton) findViewById(R.id.YtButton);
 
-        topButton.setOnClickListener(myhandler);
+
+
         myButton.setOnClickListener(myhandler);
         google_button.setOnClickListener(myhandler);
         fBButton.setOnClickListener(myhandler);
         LibButton.setOnClickListener(myhandler);
+        YoutubeButton.setOnClickListener(myhandler);
 
     }
 
@@ -59,10 +62,6 @@ public class MyActivity extends Activity {
                 startActivity(fbintent);
             }
 
-            if (v.getId() == R.id.button) {
-                Intent mapIntent = new Intent(MyActivity.this, MyMap.class);
-                MyActivity.this.startActivity(mapIntent);
-            }
 
             if (v.getId() == R.id.button3){
 
@@ -84,6 +83,14 @@ public class MyActivity extends Activity {
                 startActivity(LibraryPageIntent);
 
             }
+
+            if(v.getId() == R.id.YtButton){
+                Intent YtubeIntent = new Intent(MyActivity.this,YouTube.class);
+                startActivity(YtubeIntent);
+
+            }
+
+
 
 
                 /*sLoginView = (WebView)findViewById(R.id.button3);

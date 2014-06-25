@@ -17,15 +17,16 @@
         android:text="hey"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="#ff267cff"/>
+        android:textColor="#ff267cff"
+      />
 
     <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listViewt"
-            android:layout_weight="0.88"
+            android:layout_weight="0.75"
             tools:listitem="@android:layout/activity_list_item"
-            android:choiceMode="singleChoice"/>
+            android:choiceMode="multipleChoiceModal"/>
 
 
     <RelativeLayout
@@ -36,7 +37,7 @@
                 android:id="@+id/LibTwitButton"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:background="@drawable/twittericon"
+                android:background="@drawable/twitter_t_icon"
                 android:layout_marginRight="10dp"
 
                 />
