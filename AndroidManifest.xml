@@ -53,6 +53,10 @@
 
         ******    <activity android:name=".YouTube"></activity>               *******
 
+        ******    <activity android:name=".Directory"></activity>             *******
+
+
+
         <!-- ************************************************************** -->
 
         <meta-data

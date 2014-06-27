@@ -40,9 +40,10 @@ public class MyActivity extends Activity {
         ImageButton fBButton = (ImageButton) findViewById(R.id.fbButton);
        ImageButton LibButton = (ImageButton) findViewById(R.id.LibraryButton);
         ImageButton YoutubeButton = (ImageButton) findViewById(R.id.YtButton);
+        ImageButton DirectButton = (ImageButton) findViewById(R.id.DirectoryButton);
 
 
-
+        DirectButton.setOnClickListener(myhandler);
         myButton.setOnClickListener(myhandler);
         google_button.setOnClickListener(myhandler);
         fBButton.setOnClickListener(myhandler);
@@ -88,6 +89,11 @@ public class MyActivity extends Activity {
                 Intent YtubeIntent = new Intent(MyActivity.this,YouTube.class);
                 startActivity(YtubeIntent);
 
+            }
+
+            if(v.getId() == R.id.DirectoryButton){
+                Intent DirectoryIntent = new Intent(MyActivity.this, Directory.class);
+                startActivity(DirectoryIntent);
             }
 
 
