@@ -1,6 +1,7 @@
 package com.example.test_android;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class Directory extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.directory);
 
+       final  List<String> DirectoryList = new ArrayList<String>();
         class Datahandler extends AsyncTask<Void, Void, File> {
 
 
@@ -29,32 +31,28 @@ public class Directory extends Activity {
             protected File doInBackground(Void... params) {
 
 
-                try {
-                    String MY_TAG = "MY_TAG";
-                    InputStream inputstream = getResources().openRawResource(R.raw.campusdirectory);
-                    BufferedReader br = new BufferedReader(new InputStreamReader(inputstream));
-                    String[] completeRow = new String[100];
+            readTheFile rd = new readTheFile();
+                String line = null;
+                try{
+                //rd.loadWords();
+                    InputStream inputStream = getAssets().open("campusdirectory.txt");
+                    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                    String mytag = "MYTAG";
+                    while((line = br.readLine()) != null){
 
 
-                    String rowData;
-                    int count = 0;
-                    final List<String> rowList = new ArrayList<String>();
-                    while ((rowData = br.readLine()) != null) ;
+                        Log.d(mytag, line);
+                        DirectoryList.add(line);
 
-                    {
-                        completeRow = rowData.split(",");
-
-                        rowList.add(completeRow[0] + "  " + completeRow[1] + "  " + completeRow[2] + "  " + completeRow[3] + "  " + completeRow[4]);
-                        Log.d(MY_TAG, String.valueOf(rowList.get(count)));
-                        count++;
                     }
 
-                    br.close();
+
+
                     Directory.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
 
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Directory.this, R.layout.eventcalanderitem, rowList);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Directory.this, R.layout.eventcalanderitem,DirectoryList );
 
                             ListView list = (ListView) findViewById(R.id.listViewDirectory);
                             list.setAdapter(adapter);

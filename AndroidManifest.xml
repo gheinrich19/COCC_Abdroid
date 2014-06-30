@@ -55,6 +55,8 @@
 
         ******    <activity android:name=".Directory"></activity>             *******
 
+        ******    <activity android:name=".test_file"></activity>             ********
+
 
 
         <!-- ************************************************************** -->
