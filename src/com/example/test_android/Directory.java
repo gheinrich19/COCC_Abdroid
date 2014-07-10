@@ -35,7 +35,7 @@ public class Directory extends Activity {
                 String line = null;
                 try{
                 //rd.loadWords();
-                    InputStream inputStream = getAssets().open("campusdirectory.txt");
+                    InputStream inputStream = getAssets().open("directory.csv___jb_bak___");
                     BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                     String mytag = "MYTAG";
                     while((line = br.readLine()) != null){

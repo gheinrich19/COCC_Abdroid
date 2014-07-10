@@ -81,14 +81,24 @@ public class library extends Activity {
 
                     // This for loop grabs each instance of  tblElements and puts in List of type dataType String
                     for (Element e : tblElements) {
+
                         String s = e.text();
-                        columnTitles.add(s);
+
+                        if(s != "" || s != " " || s != null || !s.isEmpty()   ) {
+                            columnTitles.add(s);
+                        }
                         Log.d(MyTAG, "" + e.text());
                     }
 
                     for (int i = 0; i < columnTitles.size(); i++) {
                         if (columnTitles.get(i).length() == 0 || columnTitles.get(i).length() == 1) {
                             columnTitles.remove(i);
+                        }
+                        if (columnTitles.get(i) == "" || columnTitles.get(i) == " " || columnTitles.get(i) == "  " || columnTitles.get(i) == null)
+                        {
+                            columnTitles.remove(i);
+
+
                         }
                     }
 
