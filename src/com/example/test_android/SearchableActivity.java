@@ -14,4 +14,7 @@ public class SearchableActivity extends Activity {
         setContentView(R.layout.searchable);
     }
 
+
+    
+
 }
