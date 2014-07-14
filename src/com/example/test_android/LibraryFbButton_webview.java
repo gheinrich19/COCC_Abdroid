@@ -9,16 +9,14 @@ import android.webkit.WebViewClient;
 
 /**
  * Created by gage heinrich on 6/13/14.
- *
+ * <p/>
  * this class is the activity that shows the student log in page in a webview!! not a webpage!!!!!
  * uses many different methods such as websettings, loadurl(), webviewclient, setJavascriptEnabled.
- *
- *
  */
-public class LibraryFbButton_webview extends Activity{
+public class LibraryFbButton_webview extends Activity {
 
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web_view_login);
@@ -37,8 +35,6 @@ public class LibraryFbButton_webview extends Activity{
         // this forces the phone to actually run a webview before searching for other browsers installed on the phone
         myWebview.setWebViewClient(new WebViewClient());
         myWebview.loadUrl("https://www.facebook.com/barberlibrary");
-
-
 
 
     }

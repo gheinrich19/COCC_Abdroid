@@ -39,20 +39,16 @@ public class library extends Activity {
 
         // We are using AsyncTask to allow the http/ network connection rto run in the background. A process that uses the network can't be done on the main or UI Thread.
         // So we push all the parsing to the background and when it is done the words are dispalye
-       ImageButton LibFbButton = (ImageButton)findViewById(R.id.LibTwitButton);
-        ImageButton LibTwitButton = (ImageButton)findViewById(R.id.LibFbButton);
+        ImageButton LibFbButton = (ImageButton) findViewById(R.id.LibTwitButton);
+        ImageButton LibTwitButton = (ImageButton) findViewById(R.id.LibFbButton);
 
 
         LibFbButton.setOnClickListener(LibraryHandler);
         LibTwitButton.setOnClickListener(LibraryHandler);
 
 
-
-
         class parsingtable extends AsyncTask<Void, Void, String> {
             @Override
-
-
 
 
             public String doInBackground(Void... params) {
@@ -84,7 +80,7 @@ public class library extends Activity {
 
                         String s = e.text();
 
-                        if(s != "" || s != " " || s != null || !s.isEmpty()   ) {
+                        if (s != "" || s != " " || s != null || !s.isEmpty()) {
                             columnTitles.add(s);
                         }
                         Log.d(MyTAG, "" + e.text());
@@ -94,8 +90,7 @@ public class library extends Activity {
                         if (columnTitles.get(i).length() == 0 || columnTitles.get(i).length() == 1) {
                             columnTitles.remove(i);
                         }
-                        if (columnTitles.get(i) == "" || columnTitles.get(i) == " " || columnTitles.get(i) == "  " || columnTitles.get(i) == null)
-                        {
+                        if (columnTitles.get(i) == "" || columnTitles.get(i) == " " || columnTitles.get(i) == "  " || columnTitles.get(i) == null) {
                             columnTitles.remove(i);
 
 
@@ -139,16 +134,14 @@ public class library extends Activity {
         @Override
         public void onClick(View v) {
 
-            if (v.getId() == R.id.LibFbButton)
-            {
+            if (v.getId() == R.id.LibFbButton) {
                 Intent LibFbButtonIntent = new Intent(library.this, LibraryFbButton_webview.class);
                 startActivity(LibFbButtonIntent);
 
 
             }
 
-            if (v.getId() == R.id.LibTwitButton)
-            {
+            if (v.getId() == R.id.LibTwitButton) {
                 Intent LibTwitButtonIntent = new Intent(library.this, LibTwitButton_webview.class);
                 startActivity(LibTwitButtonIntent);
             }

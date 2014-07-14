@@ -7,7 +7,7 @@
  ****   to access the bobcat web account, blackbord etc.               ***
  ****                                                                  ***
  * ***********************************************************************
-**/
+ **/
 
 package com.example.test_android;
 
@@ -68,6 +68,9 @@ public class MyActivity extends Activity {
         fBButton.setOnClickListener(myhandler);
         LibButton.setOnClickListener(myhandler);
         YoutubeButton.setOnClickListener(myhandler);
+
+        // extending Asynctask to allow for http request through Jsoup
+        // parsing the html for current weather data displayed at bottom of main activity
         class getWeather extends AsyncTask<Void, Void, String> {
 
             @Override
@@ -75,19 +78,23 @@ public class MyActivity extends Activity {
 
                 String result = null;
                 try {
-                  Document doc = Jsoup.connect("http://weather.weatherbug.com/OR/Bend-weather.html?zcode=z6286").get();
+                    Document doc = Jsoup.connect("http://weather.weatherbug.com/OR/Bend-weather.html?zcode=z6286").get();
 
 
+                    // creating an elements object running a css query for specific class in String formata
                     Elements tblElements = doc.select(".entry-title");
 
                     result = tblElements.text();
 
+                    // printing out result in degrees to the logcat
                     Log.d(mTag, result);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return result;
             }
+
+            // passing the result returned from doInbackGround to execute and create instance of the getWeather class!!
             @Override
             protected void onPostExecute(String result) {
 
@@ -95,12 +102,14 @@ public class MyActivity extends Activity {
             }
 
         }
+
+        // the way I make the class execute while existing within other classes
         getWeather weather = new getWeather();
         weather.execute();
 
-
     }
 
+    // handler to listen for all mainacivity button clicks: Sets each click to a new intent to start a new activity
     public View.OnClickListener myhandler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -112,15 +121,12 @@ public class MyActivity extends Activity {
                 startActivity(fbintent);
             }
 
-
             if (v.getId() == R.id.button3) {
 
                 Intent web_view_login = new Intent(MyActivity.this, web_view_login.class);
                 startActivity(web_view_login);
 
-
             }
-
 
             if (v.getId() == R.id.button2) {
                 Intent clickmap = new Intent(MyActivity.this, google_map.class);
@@ -144,27 +150,12 @@ public class MyActivity extends Activity {
                 Intent DirectoryIntent = new Intent(MyActivity.this, Directory.class);
                 startActivity(DirectoryIntent);
             }
-
-
-
-
-
-                /*sLoginView = (WebView)findViewById(R.id.button3);
-                sLoginView.getSettings().setJavaScriptEnabled(true);
-                sLoginView.loadUrl("http://www.cocc.edu/student-login/");
-                */
-
         }
 
 
     };
 
-
-
-
-
-
-    }
+}
 
 
 

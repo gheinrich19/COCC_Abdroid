@@ -19,36 +19,35 @@ public class test_file extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testlayout);
 
-        
 
-       try {
+        try {
             loadtext();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-        public void loadtext() throws FileNotFoundException {
+    public void loadtext() throws FileNotFoundException {
 
         String myfile = "C:\\Users\\gheinrich\\Idea Projects\\test_android\\src\\com\\example\\test_android\\campusdirectory.txt";
-           File directoryFile = new File(myfile);
-            BufferedReader reader = new BufferedReader(new FileReader(directoryFile));
-            String line = null;
-            String TAG = "TAG";
+        File directoryFile = new File(myfile);
+        BufferedReader reader = new BufferedReader(new FileReader(directoryFile));
+        String line = null;
+        String TAG = "TAG";
 
 
-            try {
-                while ((line = reader.readLine()) != null) {
+        try {
+            while ((line = reader.readLine()) != null) {
 
 
-                    Log.d(TAG, "MyTag");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                Log.d(TAG, "MyTag");
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+}
 
 
 

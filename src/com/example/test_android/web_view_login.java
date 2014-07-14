@@ -8,16 +8,14 @@ import android.webkit.WebViewClient;
 
 /**
  * Created by gage heinrich on 6/13/14.
- *
+ * <p/>
  * this class is the activity that shows the student log in page in a webview!! not a webpage!!!!!
  * uses many different methods such as websettings, loadurl(), webviewclient, setJavascriptEnabled.
- *
- *
  */
-public class web_view_login extends Activity{
+public class web_view_login extends Activity {
 
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web_view_login);
@@ -25,7 +23,7 @@ public class web_view_login extends Activity{
 
         // setting up a webview, an extension of the view class it shows webpages in your program not on another browser.
 
-       WebView myWebview = (WebView) findViewById(R.id.webview);
+        WebView myWebview = (WebView) findViewById(R.id.webview);
 
         // instantiate the websettings class attachted to our webview
         WebSettings webSettings = myWebview.getSettings();
