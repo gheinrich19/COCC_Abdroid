@@ -13,10 +13,28 @@ package com.example.test_android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyActivity extends Activity {
@@ -38,10 +56,11 @@ public class MyActivity extends Activity {
         ImageButton myButton = (ImageButton) findViewById(R.id.button3);
         ImageButton google_button = (ImageButton) findViewById(R.id.button2);
         ImageButton fBButton = (ImageButton) findViewById(R.id.fbButton);
-       ImageButton LibButton = (ImageButton) findViewById(R.id.LibraryButton);
+        ImageButton LibButton = (ImageButton) findViewById(R.id.LibraryButton);
         ImageButton YoutubeButton = (ImageButton) findViewById(R.id.YtButton);
         ImageButton DirectButton = (ImageButton) findViewById(R.id.DirectoryButton);
 
+        final String mTag = "tag";
 
         DirectButton.setOnClickListener(myhandler);
         myButton.setOnClickListener(myhandler);
@@ -49,6 +68,36 @@ public class MyActivity extends Activity {
         fBButton.setOnClickListener(myhandler);
         LibButton.setOnClickListener(myhandler);
         YoutubeButton.setOnClickListener(myhandler);
+        class getWeather extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected String doInBackground(Void... params) {
+
+                String result = null;
+                try {
+                  Document doc = Jsoup.connect("http://weather.weatherbug.com/OR/Bend-weather.html?zcode=z6286").get();
+
+
+                    Elements tblElements = doc.select(".entry-title");
+
+                    result = tblElements.text();
+
+                    Log.d(mTag, result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return result;
+            }
+            @Override
+            protected void onPostExecute(String result) {
+
+                ((TextView) findViewById(R.id.setweather)).setText(result);
+            }
+
+        }
+        getWeather weather = new getWeather();
+        weather.execute();
+
 
     }
 
@@ -56,7 +105,7 @@ public class MyActivity extends Activity {
         @Override
         public void onClick(View v) {
 
-            if (v.getId() == R.id.fbButton){
+            if (v.getId() == R.id.fbButton) {
 
 
                 Intent fbintent = new Intent(MyActivity.this, facebook_cocc.class);
@@ -64,7 +113,7 @@ public class MyActivity extends Activity {
             }
 
 
-            if (v.getId() == R.id.button3){
+            if (v.getId() == R.id.button3) {
 
                 Intent web_view_login = new Intent(MyActivity.this, web_view_login.class);
                 startActivity(web_view_login);
@@ -73,28 +122,29 @@ public class MyActivity extends Activity {
             }
 
 
-            if (v.getId() == R.id.button2){
+            if (v.getId() == R.id.button2) {
                 Intent clickmap = new Intent(MyActivity.this, google_map.class);
                 startActivity(clickmap);
 
             }
 
-            if (v.getId() == R.id.LibraryButton){
+            if (v.getId() == R.id.LibraryButton) {
                 Intent LibraryPageIntent = new Intent(MyActivity.this, library.class);
                 startActivity(LibraryPageIntent);
 
             }
 
-            if(v.getId() == R.id.YtButton){
-                Intent YtubeIntent = new Intent(MyActivity.this,YouTube.class);
+            if (v.getId() == R.id.YtButton) {
+                Intent YtubeIntent = new Intent(MyActivity.this, YouTube.class);
                 startActivity(YtubeIntent);
 
             }
 
-            if(v.getId() == R.id.DirectoryButton){
+            if (v.getId() == R.id.DirectoryButton) {
                 Intent DirectoryIntent = new Intent(MyActivity.this, Directory.class);
                 startActivity(DirectoryIntent);
             }
+
 
 
 
@@ -104,12 +154,17 @@ public class MyActivity extends Activity {
                 sLoginView.loadUrl("http://www.cocc.edu/student-login/");
                 */
 
-            }
+        }
 
 
     };
 
-}
+
+
+
+
+
+    }
 
 
 
