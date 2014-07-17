@@ -1,11 +1,13 @@
 package com.example.test_android;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.google.android.gms.games.internal.LibjingleNativeSocket;
 import org.jsoup.Jsoup;
@@ -45,6 +47,7 @@ public class library extends Activity {
 
         LibFbButton.setOnClickListener(LibraryHandler);
         LibTwitButton.setOnClickListener(LibraryHandler);
+
 
 
         class parsingtable extends AsyncTask<Void, Void, String> {
@@ -101,10 +104,13 @@ public class library extends Activity {
                     library.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(library.this, R.layout.eventcalanderitem, columnTitles);
+                           // ArrayAdapter<String> adapter = new myadapter(library.this, R.layout.eventcalanderitem, columnTitles);
+
 
                             ListView list = (ListView) findViewById(R.id.listViewt);
-                            list.setAdapter(adapter);
+                            final myadapter myadapter = new myadapter(library.this, columnTitles);
+                            list.setAdapter(myadapter);
+
 
                         }
                     });

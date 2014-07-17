@@ -30,7 +30,14 @@
             android:id="@+id/listViewt"
             android:layout_weight="0.75"
             tools:listitem="@android:layout/activity_list_item"
-            android:choiceMode="multipleChoiceModal"/>
+            android:choiceMode="multipleChoiceModal"
+            android:fastScrollEnabled="true"
+            android:scrollbarTrackVertical="@drawable/drawabletrack"
+            android:scrollbarThumbVertical="@drawable/scrollthumb"
+            android:scrollbarAlwaysDrawVerticalTrack="true"/>
+
+
+           />
 
 
     <RelativeLayout

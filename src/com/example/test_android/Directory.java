@@ -10,7 +10,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -41,6 +44,8 @@ public class Directory extends Activity {
 
         // since we are reading data from a file we have to do it off the main thread so we use Asynctask which will implement SearchView.OnQueryListiner to make the listview searchable
 
+
+
         class Datahandler extends AsyncTask<Void, Void, File> implements SearchView.OnQueryTextListener {
 
 // override the doInBackground to perform our specified task(s)
@@ -70,8 +75,8 @@ public class Directory extends Activity {
                         public void run() {
                             // Array adapter extends baseadapter which serves up data from your source to your xml views
 
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Directory.this, R.layout.eventcalanderitem, DirectoryList);
-                            list.setAdapter(adapter);
+                            myadapter myadapter = new myadapter(Directory.this, DirectoryList);
+                            list.setAdapter(myadapter);
                             list.setTextFilterEnabled(true);
                             setupSearchview();
 

@@ -20,6 +20,11 @@
             android:layout_height="match_parent"
             android:id="@+id/listViewDirectory"
             android:layout_gravity="center_horizontal"
+            android:fastScrollEnabled="true"
+            android:scrollbarTrackVertical="@drawable/drawabletrack"
+            android:scrollbarThumbVertical="@drawable/scrollthumb"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:fadeScrollbars="false"
             />
 
 

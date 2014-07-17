@@ -4,4 +4,5 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textView"
-        android:textColor="#ff267cff"/>
+        android:textColor="@color/cocc_grey"
+        android:background="#fffefefe"/>
