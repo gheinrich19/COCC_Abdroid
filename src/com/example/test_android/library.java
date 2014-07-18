@@ -1,22 +1,18 @@
 package com.example.test_android;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
-import com.google.android.gms.games.internal.LibjingleNativeSocket;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,7 +104,7 @@ public class library extends Activity {
 
 
                             ListView list = (ListView) findViewById(R.id.listViewt);
-                            final myadapter myadapter = new myadapter(library.this, columnTitles);
+                            final myadapter myadapter = new myadapter(library.this, R.layout.eventcalanderitem, columnTitles);
                             list.setAdapter(myadapter);
 
 

@@ -75,7 +75,8 @@ public class Directory extends Activity {
                         public void run() {
                             // Array adapter extends baseadapter which serves up data from your source to your xml views
 
-                            myadapter myadapter = new myadapter(Directory.this, DirectoryList);
+
+                            myadapter myadapter = new myadapter(Directory.this,R.layout.eventcalanderitem ,DirectoryList);
                             list.setAdapter(myadapter);
                             list.setTextFilterEnabled(true);
                             setupSearchview();
