@@ -9,21 +9,18 @@ import android.webkit.WebViewClient;
 
 /**
  * Created by gage heinrich on 6/13/14.
- *
+ * <p/>
  * this class is the activity that shows the student log in page in a webview!! not a webpage!!!!!
  * uses many different methods such as websettings, loadurl(), webviewclient, setJavascriptEnabled.
- *
- *
  */
-public class facebook_cocc extends Activity{
+public class facebook_cocc extends Activity {
 
-static final String LOG_TAG = "LOG_TAG";
+    static final String LOG_TAG = "LOG_TAG";
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebook);
-
 
 
         // setting up a webview, an extension of the view class it shows webpages in your program not on another browser.

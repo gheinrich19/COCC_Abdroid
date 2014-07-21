@@ -27,6 +27,7 @@ public class google_map extends Activity {
 
 
     GoogleMap coccmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +39,14 @@ public class google_map extends Activity {
 
     // this function includes the necessary elements in order to create your own map
 
-    private void setUpMap(){
+    private void setUpMap() {
 
         // create map fragment object by casting to googlemap form getid()
 
         GoogleMap coccmap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
         // using the function to see if the map object is null or not
-       setUpMapIfNeeded();
+        setUpMapIfNeeded();
 
         // lets set the map type there are four options
 
