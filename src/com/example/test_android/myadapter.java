@@ -11,6 +11,7 @@ import android.widget.Filterable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 
 /**
@@ -24,59 +25,14 @@ public class myadapter extends BaseAdapter implements Filterable {
     private List<String> directoryList;
 
 
-    @Override
-    public Filter getFilter() {
 
-        Filter filter = new Filter() {
-
-            @SuppressWarnings("unchecked")
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-
-                list = (List<String>) results.values;
-                notifyDataSetChanged();
-            }
-
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-
-                FilterResults results = new FilterResults();
-                ArrayList<String> FilteredArrayNames = new ArrayList<String>();
-
-                // perform your search here using the searchConstraint String.
-
-                constraint = constraint.toString().toLowerCase();
-                for (int i = 0; i < list.size(); i++) {
-                    String dataNames = list.get(i);
-                    if (dataNames.toLowerCase().startsWith(constraint.toString())) {
-                        FilteredArrayNames.add(dataNames);
-                    }
-                }
-
-                results.count = FilteredArrayNames.size();
-                results.values = FilteredArrayNames;
-                Log.e("VALUES", results.values.toString());
-
-                if (constraint.length() == 0)
-                {
-                    FilteredArrayNames.addAll(directoryList);
-                }
-
-                return results;
-
-            }
-        };
-
-        return filter;
-    }
-
-    public myadapter(Context context, int eventcalanderitem, List<String> columnTitles) {
+    public myadapter(Context context, List<String> columnTitles) {
 
         this.mContext = context;
         this.directoryList = columnTitles;
+        this.list = columnTitles;
 
     }
-
 
     @Override
     public int getCount() {
@@ -86,7 +42,7 @@ public class myadapter extends BaseAdapter implements Filterable {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return list.get(position);
     }
 
     @Override
@@ -94,8 +50,11 @@ public class myadapter extends BaseAdapter implements Filterable {
         return 0;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         RowView view = null;
         if (convertView == null) {
             view = new RowView(this.mContext);
@@ -117,11 +76,64 @@ public class myadapter extends BaseAdapter implements Filterable {
             view.theTextview.setTextColor(Color.rgb(221, 238, 238));
         }
 
-        view.setTextView(directoryList.get(position));
+        view.setTextView(this.directoryList.get(position));
 
         return view;
 
     }
+
+    @Override
+    public Filter getFilter() {
+
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                FilterResults results = new FilterResults();
+               ArrayList<String> FilteredArrayNames = new ArrayList<String>();
+
+                // perform your search here using the searchConstraint String.
+
+                constraint = constraint.toString().toLowerCase();
+                for (int i = 0; i < list.size(); i++) {
+                    String dataNames = list.get(i);
+                    if (dataNames.toLowerCase().contains(constraint.toString())) {
+                        FilteredArrayNames.add(dataNames);
+                    }
+                }
+
+                results.count = FilteredArrayNames.size();
+                results.values = FilteredArrayNames;
+                Log.e("VALUES", results.values.toString());
+
+               /* if (constraint.length() == 0)
+                {
+                    FilteredArrayNames.addAll(directoryList);
+                }
+               */
+
+                return results;
+
+            }
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
+               directoryList  = (List<String>) results.values;
+                notifyDataSetChanged();
+            }
+
+        };
+
+
+
+        return filter;
+    }
+
+
 }
 
 

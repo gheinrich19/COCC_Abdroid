@@ -104,7 +104,7 @@ public class library extends Activity {
 
 
                             ListView list = (ListView) findViewById(R.id.listViewt);
-                            final myadapter myadapter = new myadapter(library.this, R.layout.eventcalanderitem, columnTitles);
+                            final myadapter myadapter = new myadapter(library.this, columnTitles);
                             list.setAdapter(myadapter);
 
 

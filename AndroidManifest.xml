@@ -59,7 +59,9 @@
 
         ******    <activity android:name=".test_file"></activity>             ********
 
-        ******                                                  *********
+        ******   <activity android:name=".blackboard"></activity>             *********
+
+        ******   <activity android:name=".emoloyee_webview"></activity>       *********
 
 
 
