@@ -110,12 +110,6 @@ public class myadapter extends BaseAdapter implements Filterable {
                 results.values = FilteredArrayNames;
                 Log.e("VALUES", results.values.toString());
 
-               /* if (constraint.length() == 0)
-                {
-                    FilteredArrayNames.addAll(directoryList);
-                }
-               */
-
                 return results;
 
             }
