@@ -62,6 +62,8 @@ public class MyActivity extends Activity {
         ImageButton LibButton = (ImageButton) findViewById(R.id.LibraryButton);
         ImageButton YoutubeButton = (ImageButton) findViewById(R.id.YtButton);
         ImageButton DirectButton = (ImageButton) findViewById(R.id.DirectoryButton);
+        ImageButton employeebutton = (ImageButton) findViewById(R.id.employeebutton);
+        ImageButton blackboardbutton = (ImageButton) findViewById(R.id.blackboardbutton);
 
         final String mTag = "tag";
 
@@ -71,6 +73,8 @@ public class MyActivity extends Activity {
         fBButton.setOnClickListener(myhandler);
         LibButton.setOnClickListener(myhandler);
         YoutubeButton.setOnClickListener(myhandler);
+        employeebutton.setOnClickListener(myhandler);
+        blackboardbutton.setOnClickListener(myhandler);
 
         // extending Asynctask to allow for http request through Jsoup
         // parsing the html for current weather data displayed at bottom of main activity
@@ -153,6 +157,20 @@ public class MyActivity extends Activity {
                 Intent DirectoryIntent = new Intent(MyActivity.this, Directory.class);
                 startActivity(DirectoryIntent);
             }
+
+            if (v.getId() == R.id.blackboardbutton){
+                Intent blackboardintent = new Intent(MyActivity.this, blackboard.class);
+            startActivity(blackboardintent);
+
+        }
+
+            if (v.getId() == R.id.employeebutton)
+            {
+                Intent employeeIntent = new Intent(MyActivity.this, emoloyee_webview.class);{
+                    startActivity(employeeIntent);
+                }
+            }
+
         }
 
 

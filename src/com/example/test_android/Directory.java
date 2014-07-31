@@ -1,19 +1,11 @@
 package com.example.test_android;
 
 import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -22,10 +14,6 @@ import java.util.ArrayList;
 
 
 import java.util.List;
-
-import android.view.Menu;
-import com.google.android.gms.maps.internal.u;
-import org.w3c.dom.Text;
 
 /**
  * Created by gheinrich on 6/27/2014. This Activity grabs data from a csv file and puts it into a lisview using a cutsom Listadapter
@@ -76,7 +64,7 @@ public class Directory extends Activity {
                             // Array adapter extends baseadapter which serves up data from your source to your xml views
 
 
-                            myadapter myadapter = new myadapter(Directory.this,R.layout.eventcalanderitem ,DirectoryList);
+                            myadapter myadapter = new myadapter(Directory.this, DirectoryList);
                             list.setAdapter(myadapter);
                             list.setTextFilterEnabled(true);
                             setupSearchview();
@@ -121,6 +109,7 @@ public class Directory extends Activity {
 
         Datahandler dataander = new Datahandler();
         dataander.execute();
+
 
         // data handler encapsulates all the things needed for the listview and querying
     }

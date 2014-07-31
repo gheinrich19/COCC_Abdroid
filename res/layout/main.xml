@@ -170,14 +170,7 @@
             android:layout_column="3"/>
 
 
-        <TextView
-               android:id="@+id/weatherview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bend, Oregon"
-                android:layout_row="17"
-                android:layout_column="0"
-                android:textSize="20dp"/>
+
 
         <ImageView
                 android:layout_width="wrap_content"
@@ -185,6 +178,41 @@
                 android:id="@+id/weatherIcon"
                 android:layout_row="17"
                 android:layout_column="5"/>
+
+
+
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:id="@+id/blackboardbutton"
+                android:layout_row="7"
+                android:layout_column="0"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/blackboard"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blackboard"
+                android:textColor="#ff508dff"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="normal"
+                android:textSize="15dp"
+                android:layout_row="9"
+                android:layout_column="0"
+                android:id="@+id/blackboardtext"
+                />
+        <TextView
+                android:id="@+id/weatherview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bend, Oregon"
+                android:layout_row="17"
+                android:layout_column="0"
+                android:textSize="20dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -194,6 +222,30 @@
                 android:textSize="20dp"
                 android:text="Temp"
                 android:layout_column="3"/>
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:layout_row="7"
+                android:layout_column="2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/employeebutton"
+                android:background="@drawable/employee_icon"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employee"
+                android:textColor="#ff508dff"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="normal"
+                android:textSize="15dp"
+                android:layout_row="9"
+                android:layout_column="2"
+                />
+
 
     </GridLayout>
 
