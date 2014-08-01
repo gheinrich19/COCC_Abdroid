@@ -93,6 +93,7 @@ public class Directory extends Activity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
+
                 return false;
             }
 

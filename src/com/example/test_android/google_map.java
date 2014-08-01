@@ -64,12 +64,12 @@ public class google_map extends Activity {
                 .title("Central Oregon Community College")
                 .position(cocc));
 
-        GroundOverlayOptions campusOverlay = new GroundOverlayOptions()
+      /*  GroundOverlayOptions campusOverlay = new GroundOverlayOptions()
                 .image(BitmapDescriptorFactory.fromResource(R.drawable.larger_cocc_map))
                 .position(cocc, 1500f, 1500f);
 
         coccmap.addGroundOverlay(campusOverlay);
-
+*/
     }
 
     private void setUpMapIfNeeded() {
