@@ -9,7 +9,9 @@ package com.example.test_android;
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -21,6 +23,8 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+
+import java.io.*;
 
 
 public class google_map extends Activity {
@@ -34,6 +38,37 @@ public class google_map extends Activity {
         setContentView(R.layout.google_map);
 
 
+        class readJsonToMap extends AsyncTask<Void,Void,Void>{
+
+            StringBuilder builder = new StringBuilder();
+            String line = null;
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    InputStream file = getAssets().open("bend_campus.json");
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(file));
+
+                    while ((line = br.readLine()) != null ){
+
+                        Log.d("Json_tag", line);
+
+                        builder.append(line);
+
+
+                    }
+                }
+
+
+                catch(IOException e )
+                { e.printStackTrace();}
+
+                return null;
+            }
+        }
+
+        readJsonToMap readJsonToMap = new readJsonToMap();
+        readJsonToMap.execute();
         setUpMap();
     }
 
