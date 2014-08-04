@@ -9,7 +9,10 @@ package com.example.test_android;
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -22,8 +25,10 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
+import java.io.*;
 
-public class google_map extends Activity {
+
+public class google_map extends Activity  {
 
 
     GoogleMap coccmap;
@@ -34,12 +39,53 @@ public class google_map extends Activity {
         setContentView(R.layout.google_map);
 
 
-        setUpMap();
+        class readJsonToMap extends AsyncTask<Void, Void, Void> {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                StringBuilder builder = new StringBuilder();
+                try {
+
+                    InputStream istr = getAssets().open("bend_campus.json");
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(istr));
+
+
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        builder.append(line);
+
+                        Log.d("Json_tag", line);
+
+                    }
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+
+        }
+
+
+
+
+        try {
+            readJsonToMap readJsonToMap = new readJsonToMap();
+            readJsonToMap.execute();
+            setUpMap();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // this function includes the necessary elements in order to create your own map
 
-    private void setUpMap() {
+    private void setUpMap() throws IOException {
 
         // create map fragment object by casting to googlemap form getid()
 
@@ -69,6 +115,9 @@ public class google_map extends Activity {
                 .position(cocc, 1500f, 1500f);
 
         coccmap.addGroundOverlay(campusOverlay);
+
+
+
 
     }
 
