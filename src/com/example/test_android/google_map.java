@@ -15,10 +15,7 @@ import android.util.Log;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.*;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -99,11 +96,27 @@ public class google_map extends Activity {
                 .title("Central Oregon Community College")
                 .position(cocc));
 
-        GroundOverlayOptions campusOverlay = new GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.larger_cocc_map))
-                .position(cocc, 1500f, 1500f);
 
-        coccmap.addGroundOverlay(campusOverlay);
+
+
+        PolygonOptions rectOptions = new PolygonOptions()
+                .add(new LatLng(-121.3496053,44.072791 ),
+                    new LatLng(-121.3496107,44.0726638),
+                    new LatLng(-121.3500988,44.0726754),
+                    new LatLng(-121.3501096,44.0724711),
+                    new LatLng(-121.3491976,44.0724518),
+                    new LatLng(-121.349203,44.0726561),
+                    new LatLng(-121.3489884,44.0726522),
+                    new LatLng(-121.348983,44.0727717),
+                    new LatLng(-121.3496053,44.072791));
+
+
+// Get back the mutable Polygon
+        Polygon polygon= coccmap.addPolygon(rectOptions);
+        
+
+
+
 
     }
 
